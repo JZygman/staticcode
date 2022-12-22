@@ -1,85 +1,45 @@
-package com.example.laboras.ds;
+public class User {
 
-public abstract class User {
-    private int id;
-    private String name;
-    private String surname;
-    private String login;
-    private String psw;
-    private String email;
+    private  int​ id​ ;
+    private​ String firstName​;
+     private​ String lastName​;
+     private​ int age;
+    private String profession;
+    private ArrayList<User> children;
 
-    public User(int id, String name, String surname, String login, String email) {
+    public User(int id, String firstName, String lastName, int age) {
+
         this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.login = login;
-        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.profession = profession;
+
     }
 
-    public User(int id, String name, String surname) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
+    public String getChildName(User child) {
+        if (!this.children.contains(child)) {
+            new Exception("Invalid argument!");
+        } else {
+            String name = null;
+            if (child.getFirstName() != null) {
+                name = child.getFirstName();
+            }
+            if (name == "Harry") {
+                name.replace('r', 'p');
+            }
+            if (name != null || name.length() > 0) {
+                name.concat(child.getLastName());
+            }
+        }
+        return this.getChildName(child);
     }
 
-    public User(int id) {
-        this.id = id;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public User(int id, String name, String surname, String login, String psw, String email) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.login = login;
-        this.psw = psw;
-        this.email = email;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPsw() {
-        return psw;
-    }
-
-    public void setPsw(String psw) {
-        this.psw = psw;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getLastName() {
+        return lastName;
     }
 }
